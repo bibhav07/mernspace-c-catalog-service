@@ -20,6 +20,8 @@ export default [
                     )}] `,
                 );
             }
+
+            return true;
         }),
     body("attribute").exists().withMessage("Attributes field is required"),
 ];
