@@ -34,21 +34,24 @@ const attributeSchema = new mongoose.Schema<Attribute>({
 });
 
 //model
-const categorySchema = new mongoose.Schema<Category>({
-    name: {
-        type: String,
-        required: true,
-    },
+const categorySchema = new mongoose.Schema<Category>(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
 
-    priceConfiguration: {
-        type: Map,
-        of: priceConfigurationSchema,
-        required: true,
+        priceConfiguration: {
+            type: Map,
+            of: priceConfigurationSchema,
+            required: true,
+        },
+        attribute: {
+            type: [attributeSchema],
+            required: true,
+        },
     },
-    attribute: {
-        type: [attributeSchema],
-        required: true,
-    },
-});
+    { timestamps: true },
+);
 
 export default mongoose.model("Category", categorySchema);
